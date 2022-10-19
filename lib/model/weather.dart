@@ -1,4 +1,4 @@
-class Weather {
+class WeatherResponse {
   int? lat;
   int? lon;
   String? timezone;
@@ -7,7 +7,7 @@ class Weather {
   List<Hourly>? hourly;
   List<Daily>? daily;
 
-  Weather(
+  WeatherResponse(
       {this.lat,
       this.lon,
       this.timezone,
@@ -16,7 +16,7 @@ class Weather {
       this.hourly,
       this.daily});
 
-  Weather.fromJson(Map<String, dynamic> json) {
+  WeatherResponse.fromJson(Map<String, dynamic> json) {
     lat = json['lat'];
     lon = json['lon'];
     timezone = json['timezone'];
@@ -56,6 +56,31 @@ class Weather {
   }
 }
 
+class Weather {
+  int? id;
+  String? main;
+  String? description;
+  String? icon;
+
+  Weather({this.id, this.main, this.description, this.icon});
+
+  Weather.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    main = json['main'];
+    description = json['description'];
+    icon = json['icon'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['main'] = main;
+    data['description'] = description;
+    data['icon'] = icon;
+    return data;
+  }
+}
+
 class Current {
   int? dt;
   int? sunrise;
@@ -65,7 +90,7 @@ class Current {
   int? pressure;
   int? humidity;
   double? dewPoint;
-  double? uvi;
+  num? uvi;
   int? clouds;
   int? visibility;
   double? windSpeed;

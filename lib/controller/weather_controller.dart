@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:weather_app/repository.dart';
-import 'package:weather_app/weather.dart';
+import 'package:weather_app/model/api/repository.dart';
+import 'package:weather_app/model/weather.dart';
 
 class WeatherController with ChangeNotifier {
   final Repository repository;

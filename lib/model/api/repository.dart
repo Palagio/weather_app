@@ -2,8 +2,8 @@
 import 'dart:convert';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
-import 'package:weather_app/get_location.dart';
-import 'package:weather_app/weather.dart';
+import 'package:weather_app/model/get_location.dart';
+import 'package:weather_app/model/weather.dart';
 
 class Repository {
   Future<Current> getCurrentWeather() async {
