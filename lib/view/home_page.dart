@@ -4,6 +4,8 @@ import 'package:weather_app/controller/weather_controller.dart';
 import 'package:weather_app/view/widgets/icon_text_widget.dart';
 import 'package:provider/provider.dart';
 
+import '../lottie_switch.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -46,30 +48,6 @@ class _HomePageState extends State<HomePage> {
         if (controller.currentWeather!.weather != null) {
           id = controller.currentWeather?.weather![0].id;
         }
-        String setLottieImage() {
-          switch (id) {
-            case 500:
-              image = 'assets/images/lottie/weather_day_thunderstorm.json';
-              break;
-            case 800:
-              image = 'assets/images/lottie/day_clear_sky.json';
-              break;
-            case 801:
-              image = 'assets/images/lottie/day_few_clouds.json';
-              break;
-            case 802:
-              image = 'assets/images/lottie/day_scattered_clouds.json';
-              break;
-            case 803:
-              image = 'assets/images/lottie/day_broken_clouds.json';
-              break;
-            default:
-              {
-                image = 'assets/images/lottie/day_clear_sky.json';
-              }
-          }
-          return image;
-        }
 
         return SafeArea(
           child: Column(
@@ -79,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                   width: 220,
                   height: 220,
                   child: Lottie.asset(
-                    setLottieImage(),
+                    setLottieImage(id),
                   ),
                 ),
               ),
