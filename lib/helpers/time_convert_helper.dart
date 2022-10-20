@@ -8,6 +8,36 @@ dayTime(utc) {
   return localTime;
 }
 
+dayOfWeek(utc) {
+  final localTime = DateTime.fromMillisecondsSinceEpoch(utc * 1000).weekday;
+  var dayOfWeek = '';
+  switch (localTime) {
+    case 1:
+      dayOfWeek = 'Sunday';
+      break;
+    case 2:
+      dayOfWeek = 'Monday';
+      break;
+    case 3:
+      dayOfWeek = 'Tuesday';
+      break;
+    case 4:
+      dayOfWeek = 'Wednesday';
+      break;
+    case 5:
+      dayOfWeek = 'Thursday';
+      break;
+    case 6:
+      dayOfWeek = 'Friday';
+      break;
+    case 7:
+      dayOfWeek = 'Saturday';
+      break;
+  }
+
+  return dayOfWeek;
+}
+
 monthTime(utc) {
   final localTime = DateTime.fromMillisecondsSinceEpoch(utc * 1000).month;
   var month = '';
