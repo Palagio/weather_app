@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:weather_app/controller/weather_controller.dart';
 import 'package:weather_app/view/widgets/daily_weather_widget.dart';
-import 'package:weather_app/view/widgets/hour_time.dart';
+import 'package:weather_app/view/widgets/time_convert_helper.dart';
 import 'package:weather_app/view/widgets/icon_text_widget.dart';
 import 'package:provider/provider.dart';
 import '../lottie_switch.dart';
@@ -116,18 +116,18 @@ class _HomePageState extends State<HomePage> {
                             color: const Color(0xFF104084),
                           ),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               IconTextWidget(
-                                icon: Icons.abc,
-                                text: '${controller.currentWeather?.humidity}%',
-                              ),
-                              IconTextWidget(
-                                icon: Icons.abc,
+                                image: 'assets/images/icons/rain_ping.png',
                                 text: '${(pop! * 100).round()}%',
                               ),
                               IconTextWidget(
-                                icon: Icons.abc,
+                                image: 'assets/images/icons/humidity.png',
+                                text: '${controller.currentWeather?.humidity}%',
+                              ),
+                              IconTextWidget(
+                                image: 'assets/images/icons/wind.png',
                                 text:
                                     '${controller.currentWeather?.windSpeed?.round()} km/h',
                               )
@@ -142,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width * .85,
-                    height: 40,
+                    height: 50,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
@@ -154,17 +154,18 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Padding(
-                          padding: EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(10.0),
                           child: Text(
                             'Today',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Text(
                             '${monthTime(
                               controller.hourly[0].dt!.toInt(),

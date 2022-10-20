@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:weather_app/lottie_switch.dart';
 
-import 'hour_time.dart';
+import 'time_convert_helper.dart';
 
 class DailyWeatherWidget extends StatelessWidget {
   final String? temp;
