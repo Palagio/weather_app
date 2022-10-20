@@ -13,7 +13,6 @@ class DailyWeatherWidget extends StatelessWidget {
 
   hourTime() {
     final localTime = DateTime.fromMillisecondsSinceEpoch(utc * 1000).hour;
-
     return localTime;
   }
 
