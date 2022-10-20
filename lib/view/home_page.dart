@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:weather_app/controller/weather_controller.dart';
+import 'package:weather_app/view/widgets/daily_weather_widget.dart';
 import 'package:weather_app/view/widgets/icon_text_widget.dart';
 import 'package:provider/provider.dart';
 import '../lottie_switch.dart';
@@ -142,10 +143,9 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(20),
                     color: const Color(0xFF104084),
                   ),
-                  child: ListView.builder(
-                    itemBuilder: ((context, index) {
-                      return Text(controller.hourly[index].temp.toString());
-                    }),
+                  child: DailyWeatherWidget(
+                    temp: '20',
+                    icon: Icons.abc,
                   ),
                 ),
               ],
