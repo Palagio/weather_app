@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:weather_app/controller/weather_controller.dart';
 import 'package:weather_app/view/widgets/daily_weather_widget.dart';
-import 'package:weather_app/view/widgets/time_convert_helper.dart';
+import 'package:weather_app/helpers/time_convert_helper.dart';
 import 'package:weather_app/view/widgets/icon_text_widget.dart';
 import 'package:provider/provider.dart';
-import '../lottie_switch.dart';
+import '../helpers/lottie_switch.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
