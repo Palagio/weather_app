@@ -95,33 +95,33 @@ class Current {
   int? visibility;
   double? windSpeed;
   int? windDeg;
-  int? rain;
+
   double? windGust;
   List<Weather>? weather;
 
-  Current(
-      {this.dt,
-      this.sunrise,
-      this.sunset,
-      this.temp,
-      this.feelsLike,
-      this.pressure,
-      this.humidity,
-      this.dewPoint,
-      this.uvi,
-      this.clouds,
-      this.visibility,
-      this.windSpeed,
-      this.windDeg,
-      this.windGust,
-      this.weather,
-      this.rain});
+  Current({
+    this.dt,
+    this.sunrise,
+    this.sunset,
+    this.temp,
+    this.feelsLike,
+    this.pressure,
+    this.humidity,
+    this.dewPoint,
+    this.uvi,
+    this.clouds,
+    this.visibility,
+    this.windSpeed,
+    this.windDeg,
+    this.windGust,
+    this.weather,
+  });
 
   Current.fromJson(Map<String, dynamic> json) {
     dt = json['dt'];
     sunrise = json['sunrise'];
     sunset = json['sunset'];
-    rain = json['rain'];
+
     temp = json['temp'];
     feelsLike = json['feels_like'];
     pressure = json['pressure'];

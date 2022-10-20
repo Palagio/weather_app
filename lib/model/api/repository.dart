@@ -2,6 +2,7 @@
 import 'dart:convert';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
+import 'package:weather_app/model/api/api_key.dart';
 import 'package:weather_app/model/get_location.dart';
 import 'package:weather_app/model/weather.dart';
 
@@ -10,7 +11,7 @@ class Repository {
     Position position = await getLocation();
     var lat = position.latitude;
     var lon = position.longitude;
-    var apiKey = '85b0c268fed8ef2043e2129eb8921a49';
+    var apiKey = weatherAPIkey;
     Current currentTemp = Current();
 
     var url = Uri.parse(
@@ -32,7 +33,7 @@ class Repository {
     Position position = await getLocation();
     var lat = position.latitude;
     var lon = position.longitude;
-    var apiKey = '85b0c268fed8ef2043e2129eb8921a49';
+    var apiKey = weatherAPIkey;
     List<Hourly> hourlyTemp = [];
 
     var url = Uri.parse(
@@ -56,7 +57,7 @@ class Repository {
     Position position = await getLocation();
     var lat = position.latitude;
     var lon = position.longitude;
-    var apiKey = '85b0c268fed8ef2043e2129eb8921a49';
+    var apiKey = weatherAPIkey;
     List<Daily> dailyTemp = [];
 
     var url = Uri.parse(
