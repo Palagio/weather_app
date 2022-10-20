@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:weather_app/lottie_switch.dart';
+
+import 'hour_time.dart';
 
 class DailyWeatherWidget extends StatelessWidget {
   final String? temp;
@@ -10,11 +10,6 @@ class DailyWeatherWidget extends StatelessWidget {
   final int utc;
 
   const DailyWeatherWidget({super.key, this.id, this.temp, required this.utc});
-
-  hourTime() {
-    final localTime = DateTime.fromMillisecondsSinceEpoch(utc * 1000).hour;
-    return localTime;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +33,7 @@ class DailyWeatherWidget extends StatelessWidget {
               setLottieImage(id),
             ),
             Text(
-              '${hourTime()}:00',
+              '${hourTime(utc)}:00',
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 18,

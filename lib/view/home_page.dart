@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:weather_app/controller/weather_controller.dart';
 import 'package:weather_app/view/widgets/daily_weather_widget.dart';
+import 'package:weather_app/view/widgets/hour_time.dart';
 import 'package:weather_app/view/widgets/icon_text_widget.dart';
 import 'package:provider/provider.dart';
 import '../lottie_switch.dart';
@@ -140,11 +141,54 @@ class _HomePageState extends State<HomePage> {
                     height: 20,
                   ),
                   Container(
+                    width: MediaQuery.of(context).size.width * .85,
+                    height: 40,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                      ),
+                      color: Color(0xFF104084),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            'Today',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            '${monthTime(
+                              controller.hourly[0].dt!.toInt(),
+                            )}'
+                            ' , '
+                            '${dayTime(controller.hourly[0].dt!.toInt())}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
                       width: MediaQuery.of(context).size.width * .85,
                       height: 200,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: const Color(0xFF104084),
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                        color: Color(0xFF104084),
                       ),
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
