@@ -21,11 +21,16 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    context.read<WeatherController>().getCurrentWeather();
-    context.read<WeatherController>().getHourlyWeather();
-    context.read<WeatherController>().getDailyWeather();
-    _isLoading = false;
+    WidgetsBinding.instance.addPostFrameCallback((_) => getData());
     super.initState();
+  }
+
+  getData() async {
+    var weather = Provider.of<WeatherController>(context, listen: false);
+    await weather.getCurrentWeather();
+    await weather.getHourlyWeather();
+    await weather.getDailyWeather();
+    _isLoading = false;
   }
 
   @override
@@ -38,22 +43,12 @@ class _HomePageState extends State<HomePage> {
           controller,
           snapshot,
         ) {
-          num? pop = 5;
-          num? maxTemp = 0;
-          num? minTemp = 0;
-          int? id;
-          double? atualTemp;
-
-          if (controller.hourly.isNotEmpty &&
-              controller.daily.isNotEmpty &&
-              controller.currentWeather!.weather != null &&
-              controller.currentWeather != null &&
-              _isLoading == false) {
-            pop = controller.hourly[0].pop;
-            maxTemp = controller.daily[0].temp!.max;
-            minTemp = controller.daily[0].temp!.min;
-            id = controller.currentWeather?.weather![0].id;
-            atualTemp = controller.currentWeather?.temp;
+          if (_isLoading == false) {
+            num? pop = controller.hourly[0].pop;
+            num? maxTemp = controller.daily[0].temp!.max;
+            num? minTemp = controller.daily[0].temp!.min;
+            int? id = controller.currentWeather.weather![0].id;
+            double? atualTemp = controller.currentWeather.temp;
 
             return SafeArea(
               child: SingleChildScrollView(
@@ -127,12 +122,12 @@ class _HomePageState extends State<HomePage> {
                                 IconTextWidget(
                                   image: 'assets/images/icons/humidity.png',
                                   text:
-                                      '${controller.currentWeather?.humidity}%',
+                                      '${controller.currentWeather.humidity}%',
                                 ),
                                 IconTextWidget(
                                   image: 'assets/images/icons/wind.png',
                                   text:
-                                      '${controller.currentWeather?.windSpeed?.round()} km/h',
+                                      '${controller.currentWeather.windSpeed?.round()} km/h',
                                 )
                               ],
                             ),
@@ -254,6 +249,7 @@ class _HomePageState extends State<HomePage> {
                         color: Color(0xFF104084),
                       ),
                       child: ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: controller.daily.length,
                         itemBuilder: (context, index) {
                           return DailyWeatherWidget(

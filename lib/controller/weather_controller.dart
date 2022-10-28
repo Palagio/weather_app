@@ -4,27 +4,29 @@ import 'package:weather_app/model/weather.dart';
 
 class WeatherController with ChangeNotifier {
   final Repository repository;
-  late Current? currentWeather = Current();
-  late Hourly? hourlyWeather;
-  late List<Hourly> hourly = [];
-  late List<Daily> daily = [];
+  Current currentWeather = Current();
+  List<Hourly> hourly = [];
+  List<Daily> daily = [];
 
   WeatherController(
     this.repository,
   );
 
-  void getCurrentWeather() async {
+  Future<Current> getCurrentWeather() async {
     currentWeather = await repository.getCurrentWeather();
     notifyListeners();
+    return currentWeather;
   }
 
-  void getHourlyWeather() async {
+  Future<List<Hourly>> getHourlyWeather() async {
     hourly = await repository.getHourlyWeather();
     notifyListeners();
+    return hourly;
   }
 
-  void getDailyWeather() async {
+  Future<List<Daily>> getDailyWeather() async {
     daily = await repository.getDailyWeather();
     notifyListeners();
+    return daily;
   }
 }
